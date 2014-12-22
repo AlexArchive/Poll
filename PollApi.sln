@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollApi", "PollApi\PollApi.csproj", "{6984B4AC-AE5F-4A6A-83AF-CFD6620B07EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poll.BoundaryTest", "PollApi.BoundaryTest\Poll.BoundaryTest.csproj", "{1306313D-3E46-4B02-8D1E-E33C60EC8388}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollApi.BoundaryTest", "PollApi.BoundaryTest\PollApi.BoundaryTest.csproj", "{1306313D-3E46-4B02-8D1E-E33C60EC8388}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poll", "Poll\Poll.csproj", "{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6984B4AC-AE5F-4A6A-83AF-CFD6620B07EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6984B4AC-AE5F-4A6A-83AF-CFD6620B07EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6984B4AC-AE5F-4A6A-83AF-CFD6620B07EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6984B4AC-AE5F-4A6A-83AF-CFD6620B07EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

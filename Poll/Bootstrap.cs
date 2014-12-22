@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Dispatcher;
 
-namespace PollApi
+namespace Poll
 {
     public class Bootstrap
     {
@@ -13,7 +14,6 @@ namespace PollApi
               {
                   controller = "Poll",
               });
-
             config.Routes.MapHttpRoute(
               name: "Default",
               routeTemplate: "{controller}/{id}",
@@ -22,6 +22,10 @@ namespace PollApi
                   controller = "Poll",
                   id = RouteParameter.Optional
               });
+            config.Services.Replace(
+                typeof(IHttpControllerActivator), 
+                new CompositionRoot());
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
