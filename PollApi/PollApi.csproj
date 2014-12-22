@@ -54,6 +54,7 @@
     <Compile Include="Bootstrap.cs" />
     <Compile Include="PollController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionModel .cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
