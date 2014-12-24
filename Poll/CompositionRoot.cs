@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
 using Raven.Client;
-using Raven.Client.Document;
 
 namespace Poll
 {
@@ -14,36 +13,24 @@ namespace Poll
             HttpControllerDescriptor controllerDescriptor,
             Type controllerType)
         {
-            var session = StoreProvider.Value.OpenSession();
-            request.DisposeRequestResources();
-            request.RegisterForDispose(new Release(() =>
-            {
-                session.SaveChanges();
-                session.Dispose();
-            }));
+            var session = SessionFactory.Create();
+            request.RegisterForDispose(new SessionRelease(session));
             return new PollController(session);
         }
 
-        private static readonly Lazy<IDocumentStore> StoreProvider =
-            new Lazy<IDocumentStore>(CreateDocumentStore);
-
-        private static IDocumentStore CreateDocumentStore()
+        private class SessionRelease : IDisposable
         {
-            return new DocumentStore { ConnectionStringName = "Poll" }.Initialize();
-        }
+            private readonly IDocumentSession _session;
 
-        private class Release : IDisposable
-        {
-            private readonly Action _release;
-
-            public Release(Action release)
+            public SessionRelease(IDocumentSession session)
             {
-                _release = release;
+                _session = session;
             }
 
             public void Dispose()
             {
-                _release.Invoke();
+                _session.SaveChanges();
+                _session.Dispose();
             }
         }
     }
