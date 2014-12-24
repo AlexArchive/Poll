@@ -13,7 +13,7 @@ namespace Poll
             HttpControllerDescriptor controllerDescriptor,
             Type controllerType)
         {
-            var session = SessionFactory.Create();
+            var session = CreateSession();
             request.RegisterForDispose(new SessionRelease(session));
             return new PollController(session);
         }
@@ -32,6 +32,11 @@ namespace Poll
                 _session.SaveChanges();
                 _session.Dispose();
             }
+        }
+
+        protected virtual IDocumentSession CreateSession()
+        {
+            return SessionFactory.Create();
         }
     }
 }

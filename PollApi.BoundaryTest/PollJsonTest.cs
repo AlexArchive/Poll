@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using Newtonsoft.Json;
-using Raven.Client.Document;
 using Xunit;
 
 namespace Poll.BoundaryTest
@@ -55,8 +54,7 @@ namespace Poll.BoundaryTest
                 Question = "Who is the best coder?",
                 Options = new[] { "Jon Skeet", "Mark Seemann", "Ayende" }
             };
-            using (var documentStore = new DocumentStore { ConnectionStringName = "Poll" }.Initialize())
-            using (var session = documentStore.OpenSession())
+            using (var session = EmbeddableSessionFactory.Create())
             {
                 session.Store(poll);
                 pollId = poll.Id;

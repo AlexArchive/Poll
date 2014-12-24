@@ -7,6 +7,10 @@ namespace Poll
     {
         public void Configure(HttpConfiguration config)
         {
+            SetControllerActivator(config);
+            
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
             config.Routes.MapHttpRoute(
               name: "Poll",
               routeTemplate: "{pollId}",
@@ -14,6 +18,7 @@ namespace Poll
               {
                   controller = "Poll",
               });
+            
             config.Routes.MapHttpRoute(
               name: "Default",
               routeTemplate: "{controller}/{id}",
@@ -22,10 +27,13 @@ namespace Poll
                   controller = "Poll",
                   id = RouteParameter.Optional
               });
+        }
+
+        protected virtual void SetControllerActivator(HttpConfiguration config)
+        {
             config.Services.Replace(
                 typeof(IHttpControllerActivator), 
                 new CompositionRoot());
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
