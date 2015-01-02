@@ -15,7 +15,8 @@ namespace Poll
         {
             var session = CreateSession();
             request.RegisterForDispose(new SessionRelease(session));
-            return new PollController(session);
+
+            return (IHttpController) Activator.CreateInstance(controllerType, session);
         }
 
         private class SessionRelease : IDisposable

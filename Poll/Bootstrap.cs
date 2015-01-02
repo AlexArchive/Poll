@@ -12,20 +12,12 @@ namespace Poll
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             config.Routes.MapHttpRoute(
-              name: "Poll",
-              routeTemplate: "{pollId}",
-              defaults: new
-              {
-                  controller = "Poll",
-              });
-            
-            config.Routes.MapHttpRoute(
               name: "Default",
-              routeTemplate: "{controller}/{id}",
+              routeTemplate: "{controller}/{pollId}",
               defaults: new
               {
                   controller = "Poll",
-                  id = RouteParameter.Optional
+                  pollId = RouteParameter.Optional
               });
         }
 
