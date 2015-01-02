@@ -1,0 +1,21 @@
+﻿<form ng-submit="submitPoll()">
+    <div>
+        <input placeholder="Question" type="text" ng-model="poll.question" />
+    </div>
+
+    <div>
+        <input placeholder="Option 1" type="text" ng-model="poll.options[0]" />
+    </div>
+
+    <div>
+        <input placeholder="Option 2" type="text" ng-model="poll.options[1]" />
+    </div>
+
+    <div>
+        <input placeholder="Option 3" type="text" ng-model="poll.options[2]" />
+    </div>
+
+    <div>
+        <button type="submit">Create poll</button>
+    </div>
+</form>

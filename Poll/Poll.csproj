@@ -70,9 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\pollController.js" />
+    <Content Include="app\views\poll.html" />
+    <Content Include="app\views\submit.html" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
-    <Content Include="app\controllers\pollController.js" />
+    <Content Include="app\controllers\submitController.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

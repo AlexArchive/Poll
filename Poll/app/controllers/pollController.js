@@ -1,13 +1,9 @@
-﻿app.controller('pollController', function ($scope, $http) {
+﻿app.controller('pollController', function ($scope, $http, $routeParams) {
 
-    $scope.poll = {
-        options: []
-    };
+    $http.get("Poll/" + $routeParams.pollId).then(onPollAvailable);
 
-    $scope.submitPoll = function () {
-        $http.post('Poll', $scope.poll).success(function (data, status, headers) {
-            var pollId = headers('Location');
-            window.location = 'Poll/' + pollId;
-        });
-    };
+    function onPollAvailable(response) {
+        $scope.poll = response.data;
+    }
+
 });
