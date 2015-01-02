@@ -1,0 +1,7 @@
+﻿<h2>{{poll.question}}</h2>
+
+<div ng-repeat="option in poll.options">
+    <input type="checkbox" ng-model="option.checked"> {{option.text}}
+</div>
+
+<button ng-click="vote()"></button>

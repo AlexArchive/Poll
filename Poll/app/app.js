@@ -8,8 +8,8 @@ app.config(function($routeProvider) {
     });
 
     $routeProvider.when('/:pollId', {
-        controller: 'pollController',
-        templateUrl: 'app/views/poll.html'
+        controller: 'voteController',
+        templateUrl: 'app/views/vote.html'
     });
 
 });
