@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Dispatcher;
+using Newtonsoft.Json.Serialization;
 
 namespace PollApi
 {
@@ -10,6 +11,9 @@ namespace PollApi
             SetControllerActivator(config);
             
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             config.Routes.MapHttpRoute(
               name: "Default",

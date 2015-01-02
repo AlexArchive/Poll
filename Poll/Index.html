@@ -1,9 +1,35 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <title></title>
+    <meta charset="UTF-8">
+    <title>Poll</title>
 </head>
-<body>
-    <h2>Poll</h2>
+<body ng-app="Poll" ng-controller="pollController">
+
+    <form ng-submit="submitPoll()">
+        <div>
+            <input placeholder="Question" type="text" ng-model="poll.question" />
+        </div>
+        
+        <div>
+            <input placeholder="Option 1" type="text" ng-model="poll.options[0]" />
+        </div>
+
+        <div>
+            <input placeholder="Option 2" type="text" ng-model="poll.options[1]" />
+        </div>
+
+        <div>
+            <input placeholder="Option 3" type="text" ng-model="poll.options[2]" />
+        </div>
+        
+        <div>
+            <button type="submit">Create poll</button>
+        </div>
+    </form>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/pollController.js"></script>
 </body>
 </html>
