@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Dispatcher;
 
-namespace Poll
+namespace PollApi
 {
     public class Bootstrap
     {

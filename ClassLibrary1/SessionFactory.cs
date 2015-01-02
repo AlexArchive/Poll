@@ -2,7 +2,7 @@
 using Raven.Client;
 using Raven.Client.Document;
 
-namespace Poll
+namespace PollApi
 {
     public static class SessionFactory
     {

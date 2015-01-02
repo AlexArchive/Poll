@@ -1,4 +1,4 @@
-﻿namespace Poll
+﻿namespace PollApi
 {
     public class PollOption
     {

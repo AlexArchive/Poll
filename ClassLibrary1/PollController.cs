@@ -2,7 +2,7 @@
 using System.Web.Http;
 using Raven.Client;
 
-namespace Poll
+namespace PollApi
 {
     public class PollController : ApiController
     {

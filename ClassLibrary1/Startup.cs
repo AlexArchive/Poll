@@ -1,11 +1,11 @@
 ﻿using System.Web.Http;
 using Microsoft.Owin;
 using Owin;
-using Poll;
+using PollApi;
 
 [assembly: OwinStartup(typeof(Startup))]
 
-namespace Poll
+namespace PollApi
 {
     public class Startup
     {
