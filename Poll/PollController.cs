@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
 using Raven.Client;
 
 namespace Poll
@@ -19,11 +20,17 @@ namespace Poll
             return Ok(question);
         }
 
-        public IHttpActionResult Post(Poll question)
+        public IHttpActionResult Post(PollInput pollInput)
         {
-            _session.Store(question);
+            var poll = new Poll
+            {
+                Question = pollInput.Question,
+                Options = pollInput.Options.Select((option, index) => new PollOption { Id = index, Text = option }).ToArray()
+            };
 
-            return Created(question.Id.ToString(), "");
+            _session.Store(poll);
+
+            return Created(poll.Id.ToString(), "");
         }
     }
 }

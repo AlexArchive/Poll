@@ -111,6 +111,8 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Poll.cs" />
     <Compile Include="PollController.cs" />
+    <Compile Include="PollInput.cs" />
+    <Compile Include="PollOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionFactory.cs" />
     <Compile Include="Startup.cs" />

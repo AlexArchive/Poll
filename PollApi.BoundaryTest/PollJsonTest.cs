@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -41,7 +42,7 @@ namespace Poll.BoundaryTest
                         .ReadAsStringAsync()
                         .Result);
                 Assert.Equal(poll.Question, actual.Question);
-                Assert.Equal(poll.Options, actual.Options);
+                Assert.Equal(poll.Options, actual.Options.Select(option=>option.Text));
             }
         }
 
@@ -52,14 +53,20 @@ namespace Poll.BoundaryTest
             var poll = new Poll
             {
                 Question = "Who is the best coder?",
-                Options = new[] { "Jon Skeet", "Mark Seemann", "Ayende" }
+                Options = new []
+                {
+                    new PollOption { Text = "Jon Skeet"}, 
+                    new PollOption{ Text = "Ayende" }
+                }.ToArray()
             };
+
             using (var session = EmbeddableSessionFactory.Create())
             {
                 session.Store(poll);
                 pollId = poll.Id;
                 session.SaveChanges();
             }
+
             using (var client = HttpClientFactory.Create())
             {
                 var response = client.GetAsync(pollId.ToString()).Result;

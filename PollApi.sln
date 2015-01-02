@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poll.BoundaryTest", "PollApi.BoundaryTest\Poll.BoundaryTest.csproj", "{1306313D-3E46-4B02-8D1E-E33C60EC8388}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poll", "Poll\Poll.csproj", "{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{01D9AF1A-7B4B-4CCF-977A-65F00A9BA5BE}"
@@ -18,10 +16,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D30BE9-1112-48FF-B6D8-D78C0C4A2015}.Release|Any CPU.ActiveCfg = Release|Any CPU
