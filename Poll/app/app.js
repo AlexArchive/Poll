@@ -12,4 +12,9 @@ app.config(function($routeProvider) {
         templateUrl: 'app/views/vote.html'
     });
 
+    $routeProvider.when('/:pollId/results', {
+        controller: 'resultsController',
+        templateUrl: 'app/views/results.html'
+    });
+
 });

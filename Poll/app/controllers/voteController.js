@@ -1,6 +1,7 @@
-﻿app.controller('voteController', function ($scope, $http, $routeParams) {
+﻿app.controller('voteController', function ($scope, $http, $routeParams, $location) {
 
-    $http.get("Poll/" + $routeParams.pollId).then(onPollAvailable);
+    $http.get("Poll/" + $routeParams.pollId)
+        .then(onPollAvailable);
     
     function onPollAvailable(response) {
         $scope.poll = response.data;
@@ -8,7 +9,7 @@
 
     $scope.vote = function () {
 
-        var postData = {
+        var data = {
             PollId: $routeParams.pollId,
             OptionIds: []
         };
@@ -19,12 +20,12 @@
             }
         });
 
-        $http.post('Vote', postData)
+        $http.post('Vote', data)
             .success(onVoted);
     };
 
     function onVoted() {
-        
+        $location.path("/" + $routeParams.pollId + "/results");
     }
     
 });

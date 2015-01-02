@@ -70,8 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\controllers\pollController.js" />
-    <Content Include="app\views\poll.html" />
+    <Content Include="app\controllers\resultsController.js" />
+    <Content Include="app\controllers\voteController.js" />
+    <Content Include="app\views\results.html" />
+    <Content Include="app\views\vote.html" />
     <Content Include="app\views\submit.html" />
     <Content Include="index.html" />
     <Content Include="packages.config" />

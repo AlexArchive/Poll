@@ -1,0 +1,14 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Votes </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="option in poll.options">
+            <td>{{option.text}}</td>
+            <td>{{option.votes}}</td>
+        </tr>
+    </tbody>
+</table>

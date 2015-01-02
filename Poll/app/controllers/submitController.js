@@ -6,7 +6,7 @@
 
     $scope.submitPoll = function () {
         $http.post('Poll', $scope.poll)
-             .success(onPollSubmited);
+            .success(onPollSubmited);
     };
 
     function onPollSubmited(data, status, headers) {
