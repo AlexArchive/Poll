@@ -1,11 +1,11 @@
-﻿<form ng-submit="submitPoll()">
-    
+﻿<form name="form" ng-submit="submitPoll()">
+
     <div>
-        <input placeholder="Question" type="text" ng-model="poll.question" />
+        <input placeholder="Question" type="text" ng-model="poll.question" required />
     </div>
 
     <div ng-repeat="option in poll.options track by $index">
-        <input type="text" ng-model="poll.options[$index]" />
+        <input type="text" ng-model="poll.options[$index]" ng-required="$first || $index == 1" />
         <input type="button" ng-show="$last" value="Add another choice" ng-click="addOption()">
     </div>
     <div>
@@ -13,6 +13,6 @@
         <label for="multiChoice">Allow multiple poll choices?</label>
     </div>
     <div>
-        <button type="submit">Create poll</button>
+        <button type="submit" ng-disabled="!form.$valid">Create poll</button>
     </div>
 </form>
