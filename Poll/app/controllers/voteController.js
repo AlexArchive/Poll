@@ -27,5 +27,15 @@
     function onVoted() {
         $location.path("/" + $routeParams.pollId + "/results");
     }
-    
+
+    $scope.updateSelection = function (position) {
+
+        if ($scope.poll.multiChoice === true) return;
+
+        angular.forEach($scope.poll.options, function (option, index) {
+            if (position != index) {
+                option.checked = false;
+            }
+        });
+    };
 });

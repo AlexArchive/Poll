@@ -9,6 +9,10 @@
         <input type="button" ng-show="$last" value="Add another choice" ng-click="addOption()">
     </div>
     <div>
+        <input type="checkbox" id="multiChoice" ng-model="poll.multiChoice" />
+        <label for="multiChoice">Allow multiple poll choices?</label>
+    </div>
+    <div>
         <button type="submit">Create poll</button>
     </div>
 </form>

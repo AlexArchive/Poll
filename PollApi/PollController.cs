@@ -25,6 +25,7 @@ namespace PollApi
             var poll = new Poll
             {
                 Question = pollInput.Question,
+                MultiChoice = pollInput.MultiChoice,
                 Options = pollInput.Options.Select((option, index) => new PollOption { Id = index, Text = option }).ToArray()
             };
 
