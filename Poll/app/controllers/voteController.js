@@ -5,6 +5,16 @@
     
     function onPollAvailable(response) {
         $scope.poll = response.data;
+
+        $scope.isChecked = function () {
+            for (var index in $scope.poll.options) {
+                var option = $scope.poll.options[index];
+                if (option.checked === true) {
+                    return true;
+                }
+            }
+            return false;
+        };
     }
 
     $scope.vote = function () {

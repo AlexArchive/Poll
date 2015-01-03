@@ -6,4 +6,4 @@ Multi choice: {{poll.multiChoice}}
     <input type="checkbox" ng-model="option.checked" ng-click="updateSelection($index)"> {{option.text}}
 </div>
 
-<button ng-click="vote()">Vote</button>
+<button ng-click="vote()" ng-disabled="!isChecked()">Vote</button>
