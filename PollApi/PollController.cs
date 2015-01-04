@@ -27,16 +27,25 @@ namespace PollApi
         [Route("api/poll")]
         public IHttpActionResult Post(PollInput pollInput)
         {
-            var poll = new Poll
+            if (ModelState.IsValid)
             {
-                Question = pollInput.Question,
-                MultiChoice = pollInput.MultiChoice,
-                Options = pollInput.Options.Select((option, index) => new PollOption { Id = index, Text = option }).ToArray()
-            };
+                var poll = new Poll
+                {
+                    Question = pollInput.Question,
+                    MultiChoice = pollInput.MultiChoice,
+                    Options =
+                        pollInput.Options.Select((option, index) => new PollOption {Id = index, Text = option})
+                            .ToArray()
+                };
 
-            _session.Store(poll);
+                _session.Store(poll);
 
-            return Ok(new { pollId = poll.Id, pollLocation = "http://localhost:63382/api/Poll/" + poll.Id });
+                return Ok(new {pollId = poll.Id, pollLocation = "http://localhost:63382/api/Poll/" + poll.Id});
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

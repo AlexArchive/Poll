@@ -8,7 +8,7 @@ namespace PollApi.UnitTest
     public class PollControllerTest
     {
         [Fact]
-        public void Get_NonExistentPoll_ReturnsNotFound()
+        public void GetReturnsNotFound()
         {
             var session = new Mock<IDocumentSession>();
             var sut = new PollController(session.Object);
