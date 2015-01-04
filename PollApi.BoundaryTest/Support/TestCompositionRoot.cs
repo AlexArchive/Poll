@@ -2,7 +2,7 @@ using System;
 using Raven.Client;
 using Raven.Client.Embedded;
 
-namespace Poll.BoundaryTest
+namespace PollApi.BoundaryTest.Support
 {
     public class TestCompositionRoot : CompositionRoot
     {

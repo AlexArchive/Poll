@@ -7,8 +7,8 @@
     <ProjectGuid>{1306313D-3E46-4B02-8D1E-E33C60EC8388}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Poll.BoundaryTest</RootNamespace>
-    <AssemblyName>Poll.BoundaryTest</AssemblyName>
+    <RootNamespace>PollApi.BoundaryTest</RootNamespace>
+    <AssemblyName>PollApi.BoundaryTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -87,9 +87,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestBootstrap.cs" />
-    <Compile Include="TestCompositionRoot.cs" />
-    <Compile Include="HttpClientFactory.cs" />
+    <Compile Include="Support\HttpClientFactory.cs" />
+    <Compile Include="Support\TestBootstrap.cs" />
+    <Compile Include="Support\TestCompositionRoot.cs" />
     <Compile Include="PollJsonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,9 +98,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Poll\Poll.csproj">
-      <Project>{21d30be9-1112-48ff-b6d8-d78c0c4a2015}</Project>
-      <Name>Poll</Name>
+    <ProjectReference Include="..\PollApi\PollApi.csproj">
+      <Project>{be61dfd4-318b-4ffb-baa4-447946ff3d4b}</Project>
+      <Name>PollApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

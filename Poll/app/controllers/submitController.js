@@ -7,7 +7,7 @@
 
     $scope.submitPoll = function () {
         $scope.poll.options = $scope.poll.options.filter(function () { return true; });
-        $http.post('Poll', $scope.poll)
+        $http.post('api/poll', $scope.poll)
             .success(onPollSubmited);
     };
 
@@ -16,8 +16,7 @@
     };
     
     function onPollSubmited(data, status, headers) {
-        var submitedPollId = headers('Location');
-        $location.path("/" + submitedPollId);
+        $location.path("/" + data.pollId);
     }
 
 });

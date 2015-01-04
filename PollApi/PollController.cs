@@ -13,6 +13,7 @@ namespace PollApi
             _session = session;
         }
 
+        [Route("api/poll/{pollId}")]
         public IHttpActionResult Get(int pollId)
         {
             var question = _session.Load<Poll>(pollId);
@@ -20,6 +21,7 @@ namespace PollApi
             return Ok(question);
         }
 
+        [Route("api/poll")]
         public IHttpActionResult Post(PollInput pollInput)
         {
             var poll = new Poll
@@ -31,7 +33,7 @@ namespace PollApi
 
             _session.Store(poll);
 
-            return Created(poll.Id.ToString(), "");
+            return Ok(new { pollId = poll.Id, pollLocation = "http://localhost:63382/api/Poll/" + poll.Id });
         }
     }
 }

@@ -1,9 +1,9 @@
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Testing;
 using Owin;
 
-namespace Poll.BoundaryTest
+namespace PollApi.BoundaryTest.Support
 {
     public static class HttpClientFactory
     {

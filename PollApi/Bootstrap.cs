@@ -11,7 +11,7 @@ namespace PollApi
             SetControllerActivator(config);
             
             config.Formatters.Remove(config.Formatters.XmlFormatter);
-            
+            config.MapHttpAttributeRoutes();
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 

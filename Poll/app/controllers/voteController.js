@@ -1,6 +1,6 @@
 ﻿app.controller('voteController', function ($scope, $http, $routeParams, $location) {
 
-    $http.get("Poll/" + $routeParams.pollId)
+    $http.get("api/poll/" + $routeParams.pollId)
         .then(onPollAvailable);
     
     function onPollAvailable(response) {

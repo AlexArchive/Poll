@@ -1,83 +1,101 @@
-﻿using System.Linq;
+﻿using Newtonsoft.Json;
+using PollApi.BoundaryTest.Support;
+using System;
+using System.Linq;
 using System.Net.Http;
-using Newtonsoft.Json;
 using Xunit;
 
-namespace Poll.BoundaryTest
+namespace PollApi.BoundaryTest
 {
-    public class PollJsonTest
+    public class PollJsonTest : IDisposable
     {
+        #region Setup & Teardown
+        private readonly HttpClient _client;
+
+        public PollJsonTest()
+        {
+            _client = Support.HttpClientFactory.Create();
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
+        }
+        #endregion
+
         [Fact]
         public void PostPollSucceeds()
         {
-            using (var client = HttpClientFactory.Create())
+            var input = new
             {
-                var poll = new
-                {
-                    Question = "Who is the best coder?",
-                    Options = new[] { "Jon Skeet", "Mark Seemann", "Ayende" }
-                };
-                var response = client.PostAsJsonAsync("", poll).Result;
-                Assert.True(
-                    response.IsSuccessStatusCode,
-                    "Actual status code: " + response.StatusCode);
-            }
+                Question = "question",
+                Options = new[] { "option 1", "option 2" }
+            };
+
+            var response = _client.PostAsJsonAsync("api/poll", input).Result;
+            
+            Assert.True(
+                response.IsSuccessStatusCode,
+                "Actual status code: " + response.StatusCode);
         }
 
         [Fact]
         public void GetAfterPostingPollReturnsPoll()
         {
-            using (var client = HttpClientFactory.Create())
+            var input = new
             {
-                var poll = new
-                {
-                    Question = "Who is the best coder?",
-                    Options = new[] { "Jon Skeet", "Mark Seemann", "Ayende" }
-                };
-                var postResponse = client.PostAsJsonAsync("", poll).Result;
-                var pollLocation = postResponse.Headers.Location;
-                var getResponse = client.GetAsync(pollLocation).Result;
-                var actual = JsonConvert.DeserializeObject<Poll>(
-                    getResponse.Content
-                        .ReadAsStringAsync()
-                        .Result);
-                Assert.Equal(poll.Question, actual.Question);
-                Assert.Equal(poll.Options, actual.Options.Select(option=>option.Text));
-            }
+                Question = "question",
+                Options = new[] { "option 1", "option 2" }
+            };
+
+            var postResponse = _client.PostAsJsonAsync("api/poll", input).Result;
+            dynamic postResponseContent = JsonConvert.DeserializeObject(
+                postResponse.Content
+                    .ReadAsStringAsync()
+                    .Result);
+            var pollLocation = (string)postResponseContent.pollLocation;
+            var getResponse = _client.GetAsync(pollLocation).Result;
+            var output = JsonConvert.DeserializeObject<Poll>(
+                getResponse.Content
+                    .ReadAsStringAsync()
+                    .Result);
+
+            Assert.True(output.Id > 0);
+            Assert.Equal(false, output.MultiChoice);
+            Assert.Equal(input.Question, output.Question);
+            Assert.Equal(input.Options, output.Options.Select(option => option.Text));
         }
+
 
         [Fact]
         public void GetReturnsCorrectPoll()
         {
-            int pollId;
             var poll = new Poll
             {
-                Question = "Who is the best coder?",
-                Options = new []
+                Question = "question",
+                Options = new[]
                 {
-                    new PollOption { Text = "Jon Skeet"}, 
-                    new PollOption{ Text = "Ayende" }
-                }.ToArray()
+                    new PollOption { Id = 0, Text = "option one"}, 
+                    new PollOption{ Id = 1, Text = "option two" }
+                }
             };
-
             using (var session = EmbeddableSessionFactory.Create())
             {
                 session.Store(poll);
-                pollId = poll.Id;
                 session.SaveChanges();
             }
 
-            using (var client = HttpClientFactory.Create())
-            {
-                var response = client.GetAsync(pollId.ToString()).Result;
-                var actual = JsonConvert.DeserializeObject<Poll>(
-                    response.Content
-                        .ReadAsStringAsync()
-                        .Result);
-                Assert.Equal(poll.Id, actual.Id);
-                Assert.Equal(poll.Question, actual.Question);
-                Assert.Equal(poll.Options, actual.Options);
-            }
+            var response = _client.GetAsync("api/Poll/" + poll.Id).Result;
+            var actual = JsonConvert.DeserializeObject<Poll>(
+                response.Content
+                    .ReadAsStringAsync()
+                    .Result);
+
+            Assert.Equal(poll.Id, actual.Id);
+            Assert.Equal(poll.Question, actual.Question);
+            Assert.Equal(
+                poll.Options.Select(option => option.Text), 
+                actual.Options.Select(option => option.Text));
         }
     }
 }
