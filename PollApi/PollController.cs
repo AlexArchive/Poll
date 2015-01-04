@@ -17,7 +17,10 @@ namespace PollApi
         public IHttpActionResult Get(int pollId)
         {
             var question = _session.Load<Poll>(pollId);
-
+            if (question == null)
+            {
+                return NotFound();
+            }
             return Ok(question);
         }
 

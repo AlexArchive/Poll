@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollApi", "PollApi\PollApi.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollApi.BoundaryTest", "PollApi.BoundaryTest\PollApi.BoundaryTest.csproj", "{1306313D-3E46-4B02-8D1E-E33C60EC8388}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollApi.UnitTest", "PollApi.UnitTest\PollApi.UnitTest.csproj", "{1BB10AAF-BAEF-41D2-AF98-EAC42118D962}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1306313D-3E46-4B02-8D1E-E33C60EC8388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BB10AAF-BAEF-41D2-AF98-EAC42118D962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB10AAF-BAEF-41D2-AF98-EAC42118D962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB10AAF-BAEF-41D2-AF98-EAC42118D962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB10AAF-BAEF-41D2-AF98-EAC42118D962}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
