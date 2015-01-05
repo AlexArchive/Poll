@@ -17,7 +17,7 @@ namespace PollApi
         {
             var poll = _session.Load<Poll>(pollId);
 
-            if (poll == null) 
+            if (poll == null)
                 return NotFound();
 
             return Ok(poll);
@@ -38,17 +38,27 @@ namespace PollApi
                     .Select((option, index) => new PollOption { Id = index, Text = option })
                     .ToArray()
             };
-            
+
             _session.Store(poll);
-            
+
             return Created(poll.Id.ToString(), new { pollId = poll.Id });
         }
 
-        public IHttpActionResult Put(int pollId, [FromBody] int[] optionIds)
+        public IHttpActionResult Put(int pollId, VoteInput voteInput)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             var poll = _session.Load<Poll>(pollId);
 
-            foreach (var option in poll.Options.Where(option => optionIds.Contains(option.Id)))
+            if (!poll.MultiChoice && poll.Options.Length > 1)
+            {
+                return BadRequest();
+            }
+
+            foreach (var option in poll.Options.Where(option => voteInput.Options.Contains(option.Id)))
             {
                 option.Votes += 1;
             }
