@@ -30,7 +30,7 @@
             }
         });
 
-        $http.post('Vote', data)
+        $http.put('api/poll', data)
             .success(onVoted);
     };
 

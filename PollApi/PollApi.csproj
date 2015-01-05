@@ -84,7 +84,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionFactory.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="VoteController.cs" />
     <Compile Include="VoteInput.cs" />
   </ItemGroup>
   <ItemGroup>

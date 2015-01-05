@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http;
 using Raven.Client;
 
@@ -34,18 +35,31 @@ namespace PollApi
                     Question = pollInput.Question,
                     MultiChoice = pollInput.MultiChoice,
                     Options =
-                        pollInput.Options.Select((option, index) => new PollOption {Id = index, Text = option})
+                        pollInput.Options.Select((option, index) => new PollOption { Id = index, Text = option })
                             .ToArray()
                 };
 
                 _session.Store(poll);
 
-                return Ok(new {pollId = poll.Id, pollLocation = "http://localhost:63382/api/Poll/" + poll.Id});
+                return Ok(new { pollId = poll.Id, pollLocation = "http://localhost:63382/api/Poll/" + poll.Id });
             }
             else
             {
                 return BadRequest();
             }
+        }
+
+        [Route("api/poll")]
+        public IHttpActionResult Put(VoteInput voteInput)
+        {
+            var poll = _session.Load<Poll>(voteInput.PollId);
+
+            foreach (var option in poll.Options.Where(option => voteInput.OptionIds.Contains(option.Id)))
+            {
+                option.Votes += 1;
+            }
+
+            return Ok();
         }
     }
 }
