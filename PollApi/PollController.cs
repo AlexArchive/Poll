@@ -53,6 +53,11 @@ namespace PollApi
 
             var poll = _session.Load<Poll>(pollId);
 
+            if (poll == null)
+            {
+                return NotFound();
+            }
+
             if (!poll.MultiChoice && poll.Options.Length > 1)
             {
                 return BadRequest();
