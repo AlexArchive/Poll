@@ -20,18 +20,20 @@
     $scope.vote = function () {
 
         var data = {
-            PollId: $routeParams.pollId,
-            OptionIds: []
+            Options: []
         };
 
         $scope.poll.options.forEach(function(option) {
             if (option.checked === true) {
-                data.OptionIds.push(option.id);
+                data.Options.push(option.id);
             }
         });
 
-        $http.put('api/poll/' + $routeParams.pollId, data.OptionIds)
-            .success(onVoted);
+        $http.put('api/poll/' + $routeParams.pollId, data)
+            .success(onVoted)
+            .error(function (data) {
+                alert(data.message)
+            });
     };
 
     function onVoted() {
