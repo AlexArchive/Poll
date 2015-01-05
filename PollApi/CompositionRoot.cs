@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Raven.Client;
+using System;
 using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
-using Raven.Client;
 
 namespace PollApi
 {
@@ -13,10 +13,9 @@ namespace PollApi
             HttpControllerDescriptor controllerDescriptor,
             Type controllerType)
         {
-            var session = CreateSession();
+            var session = SessionFactory.Create();
             request.RegisterForDispose(new SessionRelease(session));
-
-            return (IHttpController) Activator.CreateInstance(controllerType, session);
+            return new PollController(session);
         }
 
         private class SessionRelease : IDisposable
@@ -33,11 +32,6 @@ namespace PollApi
                 _session.SaveChanges();
                 _session.Dispose();
             }
-        }
-
-        protected virtual IDocumentSession CreateSession()
-        {
-            return SessionFactory.Create();
         }
     }
 }

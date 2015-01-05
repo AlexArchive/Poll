@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Raven.Client;
 using System.Linq;
 using System.Web.Http;
-using Raven.Client;
 
 namespace PollApi
 {
@@ -14,47 +13,42 @@ namespace PollApi
             _session = session;
         }
 
-        [Route("api/poll/{pollId}")]
         public IHttpActionResult Get(int pollId)
         {
-            var question = _session.Load<Poll>(pollId);
-            if (question == null)
-            {
+            var poll = _session.Load<Poll>(pollId);
+
+            if (poll == null) 
                 return NotFound();
-            }
-            return Ok(question);
+
+            return Ok(poll);
         }
 
-        [Route("api/poll")]
         public IHttpActionResult Post(PollInput pollInput)
         {
-            if (ModelState.IsValid)
-            {
-                var poll = new Poll
-                {
-                    Question = pollInput.Question,
-                    MultiChoice = pollInput.MultiChoice,
-                    Options =
-                        pollInput.Options.Select((option, index) => new PollOption { Id = index, Text = option })
-                            .ToArray()
-                };
-
-                _session.Store(poll);
-
-                return Ok(new { pollId = poll.Id, pollLocation = "http://localhost:63382/api/Poll/" + poll.Id });
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+
+            var poll = new Poll
+            {
+                Question = pollInput.Question,
+                MultiChoice = pollInput.MultiChoice,
+                Options = pollInput.Options
+                    .Select((option, index) => new PollOption { Id = index, Text = option })
+                    .ToArray()
+            };
+            
+            _session.Store(poll);
+            
+            return Created(poll.Id.ToString(), new { pollId = poll.Id });
         }
 
-        [Route("api/poll")]
-        public IHttpActionResult Put(VoteInput voteInput)
+        public IHttpActionResult Put(int pollId, [FromBody] int[] optionIds)
         {
-            var poll = _session.Load<Poll>(voteInput.PollId);
+            var poll = _session.Load<Poll>(pollId);
 
-            foreach (var option in poll.Options.Where(option => voteInput.OptionIds.Contains(option.Id)))
+            foreach (var option in poll.Options.Where(option => optionIds.Contains(option.Id)))
             {
                 option.Votes += 1;
             }
