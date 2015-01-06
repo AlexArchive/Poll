@@ -76,6 +76,12 @@
     <Content Include="app\views\vote.html" />
     <Content Include="app\views\submit.html" />
     <Content Include="index.html" />
+    <Content Include="main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="app\controllers\submitController.js" />
   </ItemGroup>
@@ -86,6 +92,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="main.scss" />
+    <Content Include="main.css.map">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
