@@ -1,16 +1,15 @@
-﻿﻿using System;
+﻿﻿using Castle.Windsor;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Dependencies;
-using Castle.Windsor;
 
 namespace PollApi
 {
     public class WindsorDependencyScope : IDependencyScope
     {
-
-        protected readonly IWindsorContainer _container;
+        private readonly IWindsorContainer _container;
         private ConcurrentBag<object> _toBeReleased = new ConcurrentBag<object>();
 
         public WindsorDependencyScope(IWindsorContainer container)

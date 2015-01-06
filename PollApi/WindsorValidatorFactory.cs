@@ -1,22 +1,25 @@
-﻿using System;
-using Castle.Windsor;
+﻿using Castle.Windsor;
 using FluentValidation;
+using System;
 
 namespace PollApi
 {
     public class WindsorValidatorFactory : ValidatorFactoryBase
     {
-        private readonly IWindsorContainer container; 
+        private readonly IWindsorContainer _container; 
 
         public WindsorValidatorFactory(IWindsorContainer conntainer)
         {
-            this.container = conntainer;
+            _container = conntainer;
         }
 
         public override IValidator CreateInstance(Type validatorType)
         {
-            if (container.Kernel.HasComponent(validatorType))
-                return container.Resolve(validatorType) as IValidator;
+            if (_container.Kernel.HasComponent(validatorType))
+            {
+                return _container.Resolve(validatorType) as IValidator;
+            }
+
             return null;
         }
     }

@@ -16,25 +16,43 @@ namespace PollApi
         {
             var config = new HttpConfiguration();
 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
-            config.MapHttpAttributeRoutes();
-            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            config.Filters.Add(new ValidModelActionFilter());
-            //config.Services.Replace(typeof(IHttpControllerActivator), new CompositionRoot());
+            ConfigureRoute(config);
+            ConfigureFormatters(config);
+            ConfigureGlobalFilters(config);
+            ConfigureCompositionRoot(config);
 
-            var container = new WindsorContainer().Install(new WindsorInstaller());
+            app.UseWebApi(config);
+        }
 
+        private static void ConfigureRoute(HttpConfiguration config)
+        {
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{pollId}",
                 defaults: new { pollId = RouteParameter.Optional }
             );
+        }
 
-            FluentValidationModelValidatorProvider
-                .Configure(config, provider => provider.ValidatorFactory = new WindsorValidatorFactory(container));
+        private static void ConfigureFormatters(HttpConfiguration config)
+        {
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = 
+                new CamelCasePropertyNamesContractResolver();
+        }
+
+        private static void ConfigureGlobalFilters(HttpConfiguration config)
+        {
+            config.Filters.Add(new ValidModelActionFilter());
+        }
+
+        private static void ConfigureCompositionRoot(HttpConfiguration config)
+        {
+            var container = new WindsorContainer().Install(new WindsorInstaller());
+
+            FluentValidationModelValidatorProvider.Configure(
+                config, provider => provider.ValidatorFactory = new WindsorValidatorFactory(container));
 
             config.DependencyResolver = new WindsorResolver(container);
-            app.UseWebApi(config);
         }
     }
 }
