@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.5.5.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.WebApi">
+      <HintPath>..\packages\FluentValidation.WebAPI.5.5.0.0\lib\Net45\FluentValidation.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
@@ -74,16 +86,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositionRoot.cs" />
-    <Compile Include="MustHaveTwoElementsAttribute.cs" />
     <Compile Include="Poll.cs" />
     <Compile Include="PollController.cs" />
     <Compile Include="PollInput.cs" />
+    <Compile Include="PollInputValidator.cs" />
     <Compile Include="PollOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionFactory.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="VoteInput.cs" />
+    <Compile Include="VoteInputValidator.cs" />
+    <Compile Include="WindsorInstaller.cs" />
+    <Compile Include="WindsorResolver.cs" />
+    <Compile Include="WindsorValidatorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Net.Http;
-using System.Runtime.Serialization.Formatters;
 using Raven.Client;
-using System.Linq;
 using System.Web.Http;
 
 namespace PollApi
@@ -43,6 +41,7 @@ namespace PollApi
             };
 
             _session.Store(poll);
+            _session.SaveChanges();
 
             return Created(poll.Id.ToString(), new { pollId = poll.Id });
         }
@@ -82,6 +81,7 @@ namespace PollApi
 
 
             poll.VoterIps.Add("127.0.0.1");
+            _session.SaveChanges();
 
             return Ok();
         }

@@ -1,9 +1,10 @@
-﻿using Microsoft.Owin;
+﻿using Castle.Windsor;
+using FluentValidation.WebApi;
+using Microsoft.Owin;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using PollApi;
 using System.Web.Http;
-using System.Web.Http.Dispatcher;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -19,7 +20,9 @@ namespace PollApi
             config.MapHttpAttributeRoutes();
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-            config.Services.Replace(typeof(IHttpControllerActivator), new CompositionRoot());
+            //config.Services.Replace(typeof(IHttpControllerActivator), new CompositionRoot());
+
+            var container = new WindsorContainer().Install(new WindsorInstaller());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -27,6 +30,10 @@ namespace PollApi
                 defaults: new { pollId = RouteParameter.Optional }
             );
 
+            FluentValidationModelValidatorProvider
+                .Configure(config, provider => provider.ValidatorFactory = new WindsorValidatorFactory(container));
+
+            config.DependencyResolver = new WindsorResolver(container);
             app.UseWebApi(config);
         }
     }
