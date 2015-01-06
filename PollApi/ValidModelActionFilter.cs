@@ -7,10 +7,16 @@ using System.Web.Http.Filters;
 namespace PollApi
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class ValidModelAttribute : ActionFilterAttribute
+    public class ValidModelActionFilter : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
+            if (!actionContext.ModelState.IsValid)
+            {
+                actionContext.Response = actionContext.Request.CreateErrorResponse(
+                    HttpStatusCode.BadRequest, actionContext.ModelState);
+            }
+
             if (actionContext.ActionArguments.ContainsValue(null))
             {
                 actionContext.Response = 

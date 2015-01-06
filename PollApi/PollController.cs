@@ -27,11 +27,6 @@ namespace PollApi
 
         public IHttpActionResult Post(PollInput pollInput)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(  );
-            }
-
             var poll = new Poll
             {
                 Question = pollInput.Question,
@@ -49,11 +44,6 @@ namespace PollApi
 
         public IHttpActionResult Put(int pollId, VoteInput voteInput)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
             var poll = _session.Load<Poll>(pollId);
 
             if (poll == null)
