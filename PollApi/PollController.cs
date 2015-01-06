@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Net.Http;
+using System.Web.Http.Results;
 using Raven.Client;
 using System.Web.Http;
 
@@ -26,9 +27,9 @@ namespace PollApi
 
         public IHttpActionResult Post(PollInput pollInput)
         {
-            if (pollInput == null || !ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(  );
             }
 
             var poll = new Poll
@@ -48,7 +49,7 @@ namespace PollApi
 
         public IHttpActionResult Put(int pollId, VoteInput voteInput)
         {
-            if (voteInput == null || !ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }

@@ -86,6 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidModelAttribute.cs" />
     <Compile Include="Poll.cs" />
     <Compile Include="PollController.cs" />
     <Compile Include="PollInput.cs" />

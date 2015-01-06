@@ -19,7 +19,7 @@ namespace PollApi
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.MapHttpAttributeRoutes();
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
+            config.Filters.Add(new ValidModelAttribute());
             //config.Services.Replace(typeof(IHttpControllerActivator), new CompositionRoot());
 
             var container = new WindsorContainer().Install(new WindsorInstaller());
