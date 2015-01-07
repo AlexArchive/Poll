@@ -49,4 +49,32 @@
   display: inline-block;
   margin: 10px 0; }
 
+.checkbox {
+  display: none; }
+
+.checkbox__check {
+  position: relative;
+  top: 4px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-right: 10px; }
+  .checkbox__check:before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background: black;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.checkbox:checked + label .checkbox__check:before {
+  width: 20px;
+  height: 20px;
+  border-radius: 0; }
+
 /*# sourceMappingURL=main.css.map */

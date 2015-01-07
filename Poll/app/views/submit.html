@@ -1,9 +1,9 @@
 ﻿<form name="form" ng-submit="submitPoll()">
 
     <div>
-        <input placeholder="Start by asking a question" type="text" ng-model="poll.question" required class="text-input"/>
+        <input placeholder="Start by asking a question" type="text" ng-model="poll.question" required class="text-input" />
     </div>
-    
+
     <div class="options">
 
 
@@ -12,8 +12,11 @@
             <input type="button" ng-show="$last" value="Add another choice" ng-click="addOption()" class="button">
         </div>
         <div>
-            <input type="checkbox" id="multiChoice" ng-model="poll.multiChoice" />
-            <label for="multiChoice">Allow multiple poll choices?</label>
+            <input class="checkbox" type="checkbox" id="multiChoice" ng-model="poll.multiChoice" />
+            <label for="multiChoice">
+                <span class="checkbox__check"></span>
+                Allow multiple poll choices?
+            </label>
         </div>
     </div>
 
