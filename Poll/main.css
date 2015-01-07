@@ -7,9 +7,10 @@ body {
 
 .header {
   width: 100%;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 4px solid #E7E7E7;
   padding: 15px 30px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  background-color: #F9F9F9; }
   .header__title {
     text-transform: uppercase;
     letter-spacing: 3px;

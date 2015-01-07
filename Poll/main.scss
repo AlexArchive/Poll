@@ -9,9 +9,10 @@ body {
 
 .header {
     width: 100%;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 4px solid #E7E7E7;
     padding: 15px 30px;
     margin-bottom: 20px;
+    background-color: #F9F9F9;
 
     &__title {
         text-transform: uppercase;
@@ -23,9 +24,8 @@ body {
     &__label {
         font-size: 12px;
         color: lightgray;
-        vertical-align:top;
-        font-weight:300;
-
+        vertical-align: top;
+        font-weight: 300;
     }
 }
 
