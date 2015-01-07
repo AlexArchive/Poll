@@ -79,6 +79,10 @@ body {
 }
 
 .checkbox__check {
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
     position: relative;
     top: 4px;
     display: inline-block;
@@ -89,6 +93,10 @@ body {
     margin-right: 10px;
 
     &:before {
+            -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
         content: '';
         position: absolute;
         width: 0px;
