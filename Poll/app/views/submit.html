@@ -9,8 +9,9 @@
 
         <div ng-repeat="option in poll.options track by $index">
             <input placeholder="Option {{$index+1}}" type="text" ng-model="poll.options[$index]" ng-required="$first || $index == 1" class="text-input" />
-            <input type="button" ng-show="$last" value="Add another choice" ng-click="addOption()" class="button">
+            <input type="button" ng-show="$last" value="Add another choice" ng-click="addOption()" class="button button--add-option">
         </div>
+
         <div>
             <input class="checkbox" type="checkbox" id="multiChoice" ng-model="poll.multiChoice" />
             <label for="multiChoice">
