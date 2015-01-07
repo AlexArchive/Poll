@@ -75,6 +75,8 @@
     <Content Include="app\views\results.html" />
     <Content Include="app\views\vote.html" />
     <Content Include="app\views\submit.html" />
+    <Content Include="fonts\proximanova\proximanova-light-webfont.svg" />
+    <Content Include="fonts\proximanova\proximanova-regular-webfont.svg" />
     <Content Include="index.html" />
     <Content Include="main.css">
       <DependentUpon>main.scss</DependentUpon>
@@ -96,6 +98,10 @@
     <Content Include="main.css.map">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="fonts\proximanova\proximanova-light-webfont.ttf" />
+    <Content Include="fonts\proximanova\proximanova-light-webfont.woff" />
+    <Content Include="fonts\proximanova\proximanova-regular-webfont.ttf" />
+    <Content Include="fonts\proximanova\proximanova-regular-webfont.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    font-family: 'ProximaNova', sans-serif;
+}
+
 .header {
     width: 100%;
     border-bottom: 1px solid lightgray;
@@ -10,7 +14,6 @@
     margin-bottom: 15px;
 
     &__title {
-        font-family: 'Montserrat', sans-serif;
         text-transform: uppercase;
         font-size: 18px;
         font-weight: 600;
@@ -20,7 +23,7 @@
 
     &__label {
         font-size: 10px;
-        vertical-align:top;
+        vertical-align: top;
         color: darkgray;
     }
 }
@@ -28,11 +31,9 @@
 .content-container {
     max-width: 1000px;
     margin: auto;
-
-
 }
 
-.text-input{
+.text-input {
     padding: 20px;
     margin-bottom: 10px;
     font-size: 15px;
@@ -40,10 +41,11 @@
     color: #000000;
     border: 1px solid #d9d9d9;
     border-radius: 3px;
-    width:100%;
+    width: 100%;
 }
 
 .button {
+    font-family:inherit;
     background: #309BFF;
     border: 0;
     padding: 1.2em 1.5em 1em 1.5em;
@@ -73,23 +75,41 @@
     border: 1px solid black;
     margin-top: 10px;
     margin-right: 10px;
+
     &:before {
-      content: '';
-      position: absolute;
-      width: 0px;
-      height: 0px;
-      background: black;
-      border-radius: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
+        content: '';
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        background: black;
+        border-radius: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
     }
-  }
+}
 
 .checkbox:checked + label .checkbox__check {
     &:before {
-      width: 20px;
-      height: 20px;
-      border-radius: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 0;
     }
-  }
+}
+
+@font-face {
+    font-family: 'ProximaNova';
+    src: url('fonts/proximanova/proximanova-regular-webfont.woff') format('woff'), 
+         url('fonts/proximanova/proximanova-regular-webfont.ttf') format('truetype'), 
+         url('fonts/proximanova/proximanova-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ProximaNova';
+    src: url('fonts/proximanova/proximanova-light-webfont.woff') format('woff'), 
+         url('fonts/proximanova/proximanova-light-webfont.ttf') format('truetype'), 
+         url('fonts/proximanova/proximanova-light-webfont.svg') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
