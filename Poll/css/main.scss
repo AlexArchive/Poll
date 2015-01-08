@@ -1,0 +1,131 @@
+﻿@import "_fonts.scss";
+@import "_mixins.scss";
+
+$content-padding-left: 30px;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "ProximaNova", sans-serif;
+}
+
+.header
+{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px $content-padding-left;
+    border-bottom: 4px solid #e7e7e7;
+    background-color: #f9f9f9;
+}
+
+
+.header__title {
+    font-size: 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #434343;
+    .header__label {
+        font-size: 12px;
+        font-weight: 300;
+        vertical-align: top;
+        color: lightgray;
+    }
+}
+
+.content-container {
+    max-width: 1000px;
+    margin: auto;
+    padding-left: $content-padding-left;
+}
+
+.text-input {
+    font-family: inherit;
+    font-size: 15px;
+    width: 70%;
+    margin-bottom: 10px;
+    padding: 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    @include transition(.3s);
+    &:focus {
+        border: 1px solid #a6a6a6;
+        outline: none;
+    }
+}
+
+.button
+{
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    display: inline-block;
+    margin: 10px 0;
+    padding: 1.2em 1.5em 1em 1.5em;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff !important;
+    border: 0;
+    outline: none;
+    background: #309bff;
+    @include transition(.3s);
+    &:hover {
+        background: #006bc9;
+    }
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox + .checkbox-label {
+    font-family: "adelle";
+}
+
+.checkbox__check {
+    position: relative;
+    top: 4px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid #d9d9d9;
+    @include transition(0.3s);
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        content: '';
+        border-radius: 100%;
+        background: black;
+        @include transition(.3s);
+        @include transform(translate(-50%,-50%));
+    }
+}
+
+.checkbox:checked + label .checkbox__check {
+    border-color: black;
+    &:before {
+        width: 20px;
+        height: 20px;
+        border-radius: 0;
+    }
+}
+
+.question-text {
+    font-family: "adelle";
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.settings-container {
+    margin-bottom: 10px;
+}

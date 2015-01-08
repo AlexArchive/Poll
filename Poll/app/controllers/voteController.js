@@ -2,7 +2,7 @@
 
     $http.get("api/poll/" + $routeParams.pollId)
         .then(onPollAvailable);
-    
+
     function onPollAvailable(response) {
         $scope.poll = response.data;
 
@@ -23,7 +23,7 @@
             Options: []
         };
 
-        $scope.poll.options.forEach(function(option) {
+        $scope.poll.options.forEach(function (option) {
             if (option.checked === true) {
                 data.Options.push(option.id);
             }

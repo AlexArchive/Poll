@@ -1,0 +1,146 @@
+﻿@font-face {
+  font-family: "Adelle";
+  src: url("../fonts/adelle/adelle-regular.eot");
+  src: url("../fonts/adelle/adelle-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/adelle/adelle-regular.woff") format("woff"), url("../fonts/adelle/adelle-regular.ttf") format("truetype"), url("../fonts/adelle/adelle-regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "ProximaNova";
+  src: url("../fonts/proximanova/proximanova-regular-webfont.woff") format("woff"), url("../fonts/proximanova/proximanova-regular-webfont.ttf") format("truetype"), url("../fonts/proximanova/proximanova-regular-webfont.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "ProximaNova";
+  src: url("../fonts/proximanova/proximanova-light-webfont.woff") format("woff"), url("../fonts/proximanova/proximanova-light-webfont.ttf") format("truetype"), url("../fonts/proximanova/proximanova-light-webfont.svg") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: "ProximaNova", sans-serif; }
+
+.header {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px 30px;
+  border-bottom: 4px solid #e7e7e7;
+  background-color: #f9f9f9; }
+
+.header__title {
+  font-size: 18px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #434343; }
+  .header__title .header__label {
+    font-size: 12px;
+    font-weight: 300;
+    vertical-align: top;
+    color: lightgray; }
+
+.content-container {
+  max-width: 1000px;
+  margin: auto;
+  padding-left: 30px; }
+
+.text-input {
+  font-family: inherit;
+  font-size: 15px;
+  width: 70%;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; }
+  .text-input:focus {
+    border: 1px solid #a6a6a6;
+    outline: none; }
+
+.button {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  display: inline-block;
+  margin: 10px 0;
+  padding: 1.2em 1.5em 1em 1.5em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff !important;
+  border: 0;
+  outline: none;
+  background: #309bff;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; }
+  .button:hover {
+    background: #006bc9; }
+
+.checkbox {
+  display: none; }
+
+.checkbox + .checkbox-label {
+  font-family: "adelle"; }
+
+.checkbox__check {
+  position: relative;
+  top: 4px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 1px solid #d9d9d9;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; }
+  .checkbox__check:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    content: '';
+    border-radius: 100%;
+    background: black;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+.checkbox:checked + label .checkbox__check {
+  border-color: black; }
+  .checkbox:checked + label .checkbox__check:before {
+    width: 20px;
+    height: 20px;
+    border-radius: 0; }
+
+.question-text {
+  font-family: "adelle";
+  font-size: 25px;
+  font-weight: 300; }
+
+.settings-container {
+  margin-bottom: 10px; }
+
+/*# sourceMappingURL=main.css.map */

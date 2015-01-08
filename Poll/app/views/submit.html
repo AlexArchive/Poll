@@ -1,28 +1,22 @@
 ﻿<form name="form" ng-submit="submitPoll()">
+    
+    <input type="text" class="text-input" ng-model="poll.question" placeholder="Start by asking a question" required />
 
-    <div>
-        <input placeholder="Start by asking a question" type="text" ng-model="poll.question" required class="text-input" />
+    <div ng-repeat="option in poll.options track by $index">
+        <input type="text" class="text-input" ng-model="poll.options[$index]" ng-required="$first || $index == 1" placeholder="Option {{ $index + 1 }}" />
+        <input type="button" class="button" ng-show="$last" ng-click="addOption()" value="Add another option">
     </div>
 
-    <div class="options">
-
-
-        <div ng-repeat="option in poll.options track by $index">
-            <input placeholder="Option {{$index+1}}" type="text" ng-model="poll.options[$index]" ng-required="$first || $index == 1" class="text-input" />
-            <input type="button" ng-show="$last" value="Add another option" ng-click="addOption()" class="button button--add-option">
-        </div>
-
-        <div class="multi-choice-container">
-            <input class="checkbox" type="checkbox" id="multiChoice" ng-model="poll.multiChoice" />
-            <label for="multiChoice">
-                <span class="checkbox__check"></span>
-                Allow multiple poll choices?
-            </label>
-        </div>
+    <div class="settings-container">
+        <input type="checkbox" class="checkbox" id="multiChoice" ng-model="poll.multiChoice" />
+        <label for="multiChoice" class="checkbox-label">
+            <span class="checkbox__check"></span>
+            Allow multiple poll choices?
+        </label>
     </div>
-
 
     <div>
         <button type="submit" class="button" ng-disabled="!form.$valid">Create poll</button>
     </div>
+
 </form>

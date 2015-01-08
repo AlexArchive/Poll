@@ -1,12 +1,11 @@
 ﻿<h2 class="question-text">{{poll.question}}</h2>
-<!--<p>()</p>-->
 
 <div ng-repeat="option in poll.options">
-    <input class="checkbox" id="option{{$index}}" type="checkbox" ng-model="option.checked" />
+    <input type="checkbox"  class="checkbox" id="option{{$index}}" ng-model="option.checked" />
     <label for="option{{$index}}">
         <span class="checkbox__check"></span>
         {{option.text}}
     </label>
 </div>
 
-<button ng-click="vote()" ng-disabled="!isChecked()" class="button">Vote</button>
+<button class="button" ng-click="vote()" ng-disabled="!isChecked()">Vote</button>

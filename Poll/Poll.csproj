@@ -79,10 +79,10 @@
     <Content Include="fonts\proximanova\proximanova-light-webfont.svg" />
     <Content Include="fonts\proximanova\proximanova-regular-webfont.svg" />
     <Content Include="index.html" />
-    <Content Include="main.css">
+    <Content Include="css\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
-    <Content Include="main.min.css">
+    <Content Include="css\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="packages.config" />
@@ -95,8 +95,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="main.scss" />
-    <Content Include="main.css.map">
+    <Content Include="css\main.scss" />
+    <Content Include="css\main.css.map">
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="fonts\proximanova\proximanova-light-webfont.ttf" />
@@ -106,6 +106,8 @@
     <Content Include="fonts\adelle\adelle-regular.eot" />
     <Content Include="fonts\adelle\adelle-regular.ttf" />
     <Content Include="fonts\adelle\adelle-regular.woff" />
+    <Content Include="css\_fonts.scss" />
+    <Content Include="css\_mixins.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
