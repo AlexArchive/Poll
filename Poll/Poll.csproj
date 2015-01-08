@@ -75,6 +75,7 @@
     <Content Include="app\views\results.html" />
     <Content Include="app\views\vote.html" />
     <Content Include="app\views\submit.html" />
+    <Content Include="fonts\adelle\adelle-regular.svg" />
     <Content Include="fonts\proximanova\proximanova-light-webfont.svg" />
     <Content Include="fonts\proximanova\proximanova-regular-webfont.svg" />
     <Content Include="index.html" />
@@ -102,6 +103,9 @@
     <Content Include="fonts\proximanova\proximanova-light-webfont.woff" />
     <Content Include="fonts\proximanova\proximanova-regular-webfont.ttf" />
     <Content Include="fonts\proximanova\proximanova-regular-webfont.woff" />
+    <Content Include="fonts\adelle\adelle-regular.eot" />
+    <Content Include="fonts\adelle\adelle-regular.ttf" />
+    <Content Include="fonts\adelle\adelle-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
