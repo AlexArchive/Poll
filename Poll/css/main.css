@@ -31,6 +31,9 @@ body {
   border-bottom: 4px solid #e7e7e7;
   background-color: #f9f9f9; }
 
+.header__link {
+  text-decoration: none; }
+
 .header__title {
   font-size: 18px;
   letter-spacing: 3px;

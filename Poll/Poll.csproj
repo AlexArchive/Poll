@@ -108,6 +108,7 @@
     <Content Include="fonts\adelle\adelle-regular.woff" />
     <Content Include="css\_fonts.scss" />
     <Content Include="css\_mixins.scss" />
+    <None Include="Properties\PublishProfiles\Demo.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
