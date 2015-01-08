@@ -25,7 +25,8 @@ body {
 
 .content-container {
   max-width: 1000px;
-  margin: auto; }
+  margin: auto;
+  padding-left: 30px; }
 
 .text-input {
   -moz-transition: 0.3s;
@@ -81,7 +82,7 @@ body {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 1px solid black;
+  border: 1px solid #d9d9d9;
   margin-top: 10px;
   margin-right: 10px; }
   .checkbox__check:before {
@@ -99,10 +100,15 @@ body {
     left: 50%;
     transform: translate(-50%, -50%); }
 
-.checkbox:checked + label .checkbox__check:before {
-  width: 20px;
-  height: 20px;
-  border-radius: 0; }
+.checkbox + label {
+  font-family: "adelle"; }
+
+.checkbox:checked + label .checkbox__check {
+  border-color: black; }
+  .checkbox:checked + label .checkbox__check:before {
+    width: 20px;
+    height: 20px;
+    border-radius: 0; }
 
 @font-face {
   font-family: 'ProximaNova';
@@ -120,5 +126,8 @@ body {
   font-family: "adelle";
   font-size: 25px;
   font-weight: 300; }
+
+.multi-choice-container {
+  margin-bottom: 10px; }
 
 /*# sourceMappingURL=main.css.map */
